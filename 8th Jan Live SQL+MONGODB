@@ -1,0 +1,237 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "5228fedc-e55d-42cc-889b-ff17183dfda4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pymongo\n",
+    "client = pymongo.MongoClient(\"mongodb+srv://ineuron:<password>@cluster0.omz77av.mongodb.net/?retryWrites=true&w=majority\")\n",
+    "db = client.test"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "35883852-f65c-48ba-8dc4-c951e5bebaa9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: pymongo in /opt/conda/lib/python3.10/site-packages (4.3.3)\n",
+      "Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /opt/conda/lib/python3.10/site-packages (from pymongo) (2.3.0)\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "pip install pymongo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "10ab7285-b5b9-4b48-b33e-e91b34742f66",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Database(MongoClient(host=['ac-1msdzxd-shard-00-01.omz77av.mongodb.net:27017', 'ac-1msdzxd-shard-00-00.omz77av.mongodb.net:27017', 'ac-1msdzxd-shard-00-02.omz77av.mongodb.net:27017'], document_class=dict, tz_aware=False, connect=True, retrywrites=True, w='majority', authsource='admin', replicaset='atlas-umtd6f-shard-0', tls=True), 'test')\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pymongo\n",
+    "client = pymongo.MongoClient(\"mongodb+srv://ineuron:ineuron@cluster0.omz77av.mongodb.net/?retryWrites=true&w=majority\")\n",
+    "db = client.test\n",
+    "print(db)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "88324e02-c411-40ec-91e9-5806e4baa2e8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "database = client['ineuron']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "43ff70e1-ac8c-45b7-b089-ddadc5245f70",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "coll = database['fsds_8th']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "bc56ccce",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       }"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "31dc5d38-e23a-45fe-9291-84c5d90387c4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertOneResult at 0x7fc9cf961210>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_one(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "10d5b8fb-09c3-469a-ac37-080000857b4c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "many_data = [{\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    " {\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    "     {\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    "         {\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    "{\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    "{\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },\n",
+    "{\"classname\":\"fsds 2.0\" , \n",
+    "        \"topic name\":\"mongodb\" , \n",
+    "        \"today date\":\"8th 2023\"\n",
+    "       },]\n",
+    "        \n",
+    "        \n",
+    "            \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "0cc061ec-4f6d-44b9-b974-de1180f57e64",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertManyResult at 0x7fc9cf75c190>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_many(many_data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "56378d8a-f96b-47b9-9056-d786e4488e14",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data1 = {\"class name\":\"full stacjk data science 2.0\",\n",
+    "         \"topic name\":\"mongo db nosql\",\n",
+    "         \"todays date\" :\"8th may 2023\",\n",
+    "         \"todays task\":\"mysql based task\",\n",
+    "         \"todays configuration\" : [\"mongo atlas \", \"mysql workbench\" , \"momgo compass\"]}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "2ee122d4-cda7-476a-aca5-0db0faa9e40f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertOneResult at 0x7fc9f619e440>"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_one(data1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "62ce79e9-ee4b-4305-9613-ba8d17aec5fd",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
