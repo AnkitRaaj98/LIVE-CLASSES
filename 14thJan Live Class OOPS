@@ -1,0 +1,218 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "fa01afe5-1871-4619-adbe-b343f01223d2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class ineuron:\n",
+    "    pass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "af9e467f-5fde-4bcf-81bb-d3047173c745",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class ineuron:\n",
+    "    \n",
+    "    def ineron1(self):\n",
+    "        print(\"ineuron is a company in edtech\")\n",
+    "        \n",
+    "    def ineuron_students(self):\n",
+    "        print(\"students are amazing in ineuron\")\n",
+    "        \n",
+    "    def ineuron_support(self):\n",
+    "        print(\"yes we do give support\")\n",
+    "        \n",
+    "    def ineuron_fee(self):\n",
+    "        print(\"its very very affordable\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "6be6ce1e-3a92-4b27-b4cb-563137f63036",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = ineuron()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "ce50af23-c7a0-4819-81cb-08664b7e8d24",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "its very very affordable\n"
+     ]
+    }
+   ],
+   "source": [
+    "a.ineuron_fee()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "501272cf-c074-42d2-84ea-a0303de694c2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pymongo\n",
+    "class mongoDB:\n",
+    "    \n",
+    "    def __init__(self , userid , password , data ):\n",
+    "        \n",
+    "        \"\"\"this is the code for mongodb and it's related application\"\"\"\n",
+    "        self.userid = userid\n",
+    "        self.password = password\n",
+    "        self.data = data\n",
+    "        \n",
+    "    \n",
+    "    def connect(self ):\n",
+    "        print(\"this fun is helps us to connect with your mongodb\")\n",
+    "        url = \"mongodb+srv://\" + self.userid + \":\" + self.password + \"@cluster0.pzwy3uz.mongodb.net/?retryWrites=true&w=majority\"\n",
+    "        client = pymongo.MongoClient(url)\n",
+    "        return client\n",
+    "        \n",
+    "        \n",
+    "    def insert(self ):\n",
+    "        conn = self.connect()\n",
+    "        print(\"this fun will us to insert into mongodb\")\n",
+    "        db = conn['mongodb_test']\n",
+    "        coll = db['mongo_record']\n",
+    "        coll.insert_one(self.data)\n",
+    "        \n",
+    "    def update(self):\n",
+    "        print(\"this fun will help us to update into mongodb\")\n",
+    "        \n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e54aab8a-78b2-49df-b249-3c6615f1b526",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mongo = mongoDB(\"ankit\" , \"ankit\" )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9798379e-b7e9-4b50-99b6-320385074477",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mongo.insert({\"name\" : \"ankit\" , \"number\" : 1234})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "79a773dd-8491-4493-8c6b-ea4622306a14",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6ef358e9-339c-425e-8967-516733766d99",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mongo.password"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5d322523-50f1-44ba-b964-6bb96a622828",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mongo.userid"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f5b049b1-7585-4730-9ded-019498207150",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "conn = mongo.connect()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6cde56c1-62ed-4483-8f8a-283547afb717",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "conn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "21b1d61f-c9dc-47e6-9e03-85066ce31be7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mongo.insert(conn,{'name':'ankit','number' : '1234'})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cc47ce92-c66f-4c8c-a474-b337fb96df34",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b33488c4-62f5-48e8-82c0-2cba6dedfa95",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
