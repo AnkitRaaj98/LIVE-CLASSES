@@ -1,0 +1,778 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "233c64fa-63e6-4f4d-add6-0de1cfb7cb55",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pymongo \n",
+    "client = pymongo.MongoClient(\"mongodb+srv://ankit:ankit@cluster0.pzwy3uz.mongodb.net/?retryWrites=true&w=majority\")\n",
+    "db = client.test"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "ed9bfa1f-7a2e-4e0e-869a-987f87e4ac13",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting pymongo\n",
+      "  Downloading pymongo-4.3.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (492 kB)\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m492.9/492.9 kB\u001b[0m \u001b[31m28.7 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+      "\u001b[?25hCollecting dnspython<3.0.0,>=1.16.0\n",
+      "  Downloading dnspython-2.3.0-py3-none-any.whl (283 kB)\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m283.7/283.7 kB\u001b[0m \u001b[31m35.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+      "\u001b[?25hInstalling collected packages: dnspython, pymongo\n",
+      "Successfully installed dnspython-2.3.0 pymongo-4.3.3\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "pip install pymongo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "ceb85ab4-7ad2-455f-8c6f-bae7b2583081",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Database(MongoClient(host=['ac-zc9cjnz-shard-00-02.pzwy3uz.mongodb.net:27017', 'ac-zc9cjnz-shard-00-00.pzwy3uz.mongodb.net:27017', 'ac-zc9cjnz-shard-00-01.pzwy3uz.mongodb.net:27017'], document_class=dict, tz_aware=False, connect=True, retrywrites=True, w='majority', authsource='admin', replicaset='atlas-mq2s9b-shard-0', tls=True), 'test')\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(db)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "f7259e85-1511-43e3-9f3a-4c1cd0074833",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "db = client['ineuron']\n",
+    "coll = db['course']\n",
+    "coll1 = db['students']\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "208ad213-e86e-4e0e-bdfe-7f8ddc73714c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {'course_name' : ['full stack data science','full stack data analytics','big data','devops','blockchain'],\n",
+    "        'course_instructor' : ['sudhanshu','anand','shashank','hitesh','navin'],\n",
+    "        'start_date' : '12-12-2023',\n",
+    "        'duration' : 'six months',\n",
+    "        'mode' : 'live online',\n",
+    "        'certification' : 'Yes',\n",
+    "        'prerequisite' : 'Dedication',\n",
+    "        'resume' : 'yes',\n",
+    "        'mockinterview' : 'yes'\n",
+    "       }"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "a31da171-2ca0-42cd-ba14-f6306333e99f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertOneResult at 0x7fb22416e7a0>"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_one(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "da700f77-9f00-40ea-aa00-8a7da015b641",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data1 = {\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "64bc9a03-37e5-49f5-b2d1-5e637cf9ce6a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertOneResult at 0x7fb20da69570>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_one(data1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "e3d4952a-2c0f-4e61-9a78-93c658352dad",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data2 = [{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "}]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "b218f70e-03f9-4a87-9a71-4f0594ace75d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertManyResult at 0x7fb2282fa3b0>"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_many(data2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "c38ba4ec-0d2f-46e6-812e-815c9fd4cb98",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data3 = [{\n",
+    "    'name' : 'full stack web dev',\n",
+    "    'instructor' : ['Hitesh' , 'Anurag'],\n",
+    "    'price' : '17700',\n",
+    "    'duration' : 'eight months'\n",
+    "    \n",
+    "},\n",
+    "    {'course_name' : ['full stack data science','full stack data analytics','big data','devops','blockchain'],\n",
+    "        'course_instructor' : ['sudhanshu','anand','shashank','hitesh','navin'],\n",
+    "        'start_date' : '12-12-2023',\n",
+    "        'duration' : 'six months',\n",
+    "        'mode' : 'live online',\n",
+    "        'certification' : 'Yes',\n",
+    "        'prerequisite' : 'Dedication',\n",
+    "        'resume' : 'yes',\n",
+    "        'mockinterview' : 'yes'\n",
+    "       }\n",
+    "]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "401f373c-992d-4784-a64e-35c32a2f7f44",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.InsertManyResult at 0x7fb1f153a770>"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.insert_many(data3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "a2ca4aff-02a2-478e-9d2e-fea2f8e06795",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "rec = coll.find()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "134250bf-d5c9-40e3-aa0d-5f2be6b65767",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.cursor.Cursor at 0x7fb1f165ec80>"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "rec"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "d5851549-79d5-438c-8ee2-80731301e258",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a0216c850c2c74ba74a8b'),\n",
+      " 'certification': 'Yes',\n",
+      " 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'],\n",
+      " 'course_name': ['full stack data science',\n",
+      "                 'full stack data analytics',\n",
+      "                 'big data',\n",
+      "                 'devops',\n",
+      "                 'blockchain'],\n",
+      " 'duration': 'six months',\n",
+      " 'mockinterview': 'yes',\n",
+      " 'mode': 'live online',\n",
+      " 'prerequisite': 'Dedication',\n",
+      " 'resume': 'yes',\n",
+      " 'start_date': '12-12-2023'}\n",
+      "{'_id': ObjectId('645a039cc850c2c74ba74a8c'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04b3c850c2c74ba74a8d'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8e'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8f'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a90'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a91'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a92'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a93'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a94'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a95'),\n",
+      " 'certification': 'Yes',\n",
+      " 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'],\n",
+      " 'course_name': ['full stack data science',\n",
+      "                 'full stack data analytics',\n",
+      "                 'big data',\n",
+      "                 'devops',\n",
+      "                 'blockchain'],\n",
+      " 'duration': 'six months',\n",
+      " 'mockinterview': 'yes',\n",
+      " 'mode': 'live online',\n",
+      " 'prerequisite': 'Dedication',\n",
+      " 'resume': 'yes',\n",
+      " 'start_date': '12-12-2023'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a96'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a97'),\n",
+      " 'certification': 'Yes',\n",
+      " 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'],\n",
+      " 'course_name': ['full stack data science',\n",
+      "                 'full stack data analytics',\n",
+      "                 'big data',\n",
+      "                 'devops',\n",
+      "                 'blockchain'],\n",
+      " 'duration': 'six months',\n",
+      " 'mockinterview': 'yes',\n",
+      " 'mode': 'live online',\n",
+      " 'prerequisite': 'Dedication',\n",
+      " 'resume': 'yes',\n",
+      " 'start_date': '12-12-2023'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a98'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a99'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9a'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9b'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9c'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9d'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9e'),\n",
+      " 'duration': 'eight months',\n",
+      " 'instructor': ['Hitesh', 'Anurag'],\n",
+      " 'name': 'full stack web dev',\n",
+      " 'price': '17700'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9f'),\n",
+      " 'certification': 'Yes',\n",
+      " 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'],\n",
+      " 'course_name': ['full stack data science',\n",
+      "                 'full stack data analytics',\n",
+      "                 'big data',\n",
+      "                 'devops',\n",
+      "                 'blockchain'],\n",
+      " 'duration': 'six months',\n",
+      " 'mockinterview': 'yes',\n",
+      " 'mode': 'live online',\n",
+      " 'prerequisite': 'Dedication',\n",
+      " 'resume': 'yes',\n",
+      " 'start_date': '12-12-2023'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "from pprint import pprint\n",
+    "for i in rec: \n",
+    "    pprint(i) #data which we insert in mongodb we can see here"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "568ef3a6-ffad-4148-8b25-0a3916f1a0e4",
+   "metadata": {},
+   "source": [
+    "pprint helps us to beutify the data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "8177efc9-d079-46b4-816d-4a3cd7356c5f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'_id': ObjectId('645a0216c850c2c74ba74a8b'),\n",
+       " 'course_name': ['full stack data science',\n",
+       "  'full stack data analytics',\n",
+       "  'big data',\n",
+       "  'devops',\n",
+       "  'blockchain'],\n",
+       " 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'],\n",
+       " 'start_date': '12-12-2023',\n",
+       " 'duration': 'six months',\n",
+       " 'mode': 'live online',\n",
+       " 'certification': 'Yes',\n",
+       " 'prerequisite': 'Dedication',\n",
+       " 'resume': 'yes',\n",
+       " 'mockinterview': 'yes'}"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.find_one()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "57ec10d9-6d78-43b9-99ec-b515a5ce117f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "rec1 = coll.find({} , {'duration'})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "5eff98de-69e7-433a-b0a3-de4ffc8e3da9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a0216c850c2c74ba74a8b'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a039cc850c2c74ba74a8c'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04b3c850c2c74ba74a8d'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8e'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8f'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a90'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a91'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a92'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a93'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a94'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a95'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a96'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a97'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a98'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a99'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9a'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9b'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9c'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9d'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9e'), 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9f'), 'duration': 'six months'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in rec1:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "7ca1fe1f-9a3d-4b48-b699-30ee344dbfc9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a0216c850c2c74ba74a8b'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a95'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a97'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9f'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in coll.find({'duration':'six months'}):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "749cb9ee-1853-4a78-b11b-692ed744f864",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a0216c850c2c74ba74a8b'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a039cc850c2c74ba74a8c'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04b3c850c2c74ba74a8d'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8e'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8f'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a90'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a91'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a92'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a93'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a94'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a95'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a96'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a97'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a98'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a99'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9a'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9b'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9c'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9d'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9e'), 'duration': 'six months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9f'), 'duration': 'six months'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in coll.find({} , {'duration':'six months'}):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "ee7ea5c9-8db0-46a2-a6fb-79e744bd8a16",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.UpdateResult at 0x7fb1f1616e90>"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.update_one({'price':'17700'} , {'$set':{'price' : 18000}})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "36af5659-f374-4dc2-845d-0d0da169f548",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.UpdateResult at 0x7fb1f1617a90>"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.update_many({'price':'17700'} , {'$set':{'price' : 18000}})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "c33b0ac7-6ad2-456b-9b57-82f6a14bbb36",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a0216c850c2c74ba74a8b'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a039cc850c2c74ba74a8c'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 1800, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04b3c850c2c74ba74a8d'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8e'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8f'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a90'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a91'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a92'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a93'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a94'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a05bac850c2c74ba74a95'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a96'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0793c850c2c74ba74a97'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a98'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a99'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9a'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9b'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9c'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0820c850c2c74ba74a9d'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9e'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 18000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a0821c850c2c74ba74a9f'), 'course_name': ['full stack data science', 'full stack data analytics', 'big data', 'devops', 'blockchain'], 'course_instructor': ['sudhanshu', 'anand', 'shashank', 'hitesh', 'navin'], 'start_date': '12-12-2023', 'duration': 'six months', 'mode': 'live online', 'certification': 'Yes', 'prerequisite': 'Dedication', 'resume': 'yes', 'mockinterview': 'yes'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in coll.find():\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "64963b7c-ca68-4d1c-a083-5ad48239dd2d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<pymongo.results.DeleteResult at 0x7fb1f1677760>"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coll.delete_many({'duration':'six months'})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "afc2173e-c8e9-4c80-9681-55070d21840c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for i in coll.find({'duration' : 'six months'}):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "6d890b01-0b56-4588-9737-8a73af5242cc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'_id': ObjectId('645a04b3c850c2c74ba74a8d'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 2000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8e'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 3000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a8f'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 4000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a90'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 5000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a91'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 7000, 'duration': 'eight months'}\n",
+      "{'_id': ObjectId('645a04f8c850c2c74ba74a92'), 'name': 'full stack web dev', 'instructor': ['Hitesh', 'Anurag'], 'price': 6000, 'duration': 'eight months'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in coll.find({'price':{'$lt':8000}}):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "db159afe-b560-4aa2-9dc7-38f24b2dd050",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
