@@ -1,0 +1,708 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "bbc9164a-cc5d-425f-ae20-ff846b3a44ee",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class test :\n",
+    "    def meth1(self):\n",
+    "        return \"this is my fiorst meth\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "e99794ef-e041-410b-a34f-e4f66a7f228c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = test()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "184b8290-d3c9-4724-aaa4-c6b1d55c0b2b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is my fiorst meth'"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.meth1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "6a0b6174-76b2-451a-aaa0-a71654fa5fcb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class test1:\n",
+    "    @staticmethod\n",
+    "    def meth1():\n",
+    "        return \"this is a meth we can access without creating an objetc\"\n",
+    "    \n",
+    "    def meth2(self):\n",
+    "        return \"this is a meth with  out static\"\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "164a4a91-950c-4195-925c-23d7cfaca9f1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "b = test1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "67e5e400-dc14-488f-87a0-27d435503cfb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is a meth we can access without creating an objetc'"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "test1.meth1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "2837e327-9cdb-4361-b02b-acae8c6da21b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is a meth we can access without creating an objetc'"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b.meth1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6bab67be-b738-41d4-ae24-f9e4f309b913",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is a meth with  out static'"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b.meth2()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e123ecc-46a3-422d-a305-fbefa7333bb0",
+   "metadata": {},
+   "source": [
+    "@staticmethod for eg : same password and userid directly belongs to the class and with the help of @staticmethd we can modify different instance object."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "edcf7eb0-d76e-44d8-8a3f-65bfb7c75dfa",
+   "metadata": {},
+   "source": [
+    "INHERITANCE"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "66f1baaa-d8b0-480d-8dbc-1f937ce3602b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class pa1:\n",
+    "    \n",
+    "    def pa_meth(self):\n",
+    "        return \"this is my pa1 meth\"\n",
+    "\n",
+    "class pa2:\n",
+    "    \n",
+    "    def pa_meth2(self):\n",
+    "        return \"this is my pa2 meth\"\n",
+    "    \n",
+    "class pa3:\n",
+    "    \n",
+    "    def pa_meth3(self):\n",
+    "        return \"this is my pa3 meth\"\n",
+    "    \n",
+    "class child(pa1 , pa2 , pa3 ):\n",
+    "    \n",
+    "    def child_meth(self):\n",
+    "        return \"this is my child meth\"\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "86dde150-c7e6-48f4-872b-7e7d8b21a073",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = child()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "da840d27-be0e-4b37-84f0-bb1999cc909e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is my child meth'"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.child_meth()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "3342cb80-a4bd-4870-bb56-dbbf5430d32f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is my pa1 meth'"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.pa_meth()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "2f242aa3-32a1-46cd-9418-5a0273e63604",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is my pa2 meth'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.pa_meth2()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9a9e7704-325a-46af-8579-c7f4a842e154",
+   "metadata": {},
+   "source": [
+    "MULTILAVEL INHERITANCE"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "117ac0a5-cd29-4ba6-a435-1998cd942ad7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class cl1:\n",
+    "     def class_meth(self):\n",
+    "            return \"class1 meth\"\n",
+    "        \n",
+    "class cl2(cl1):\n",
+    "    pass\n",
+    "\n",
+    "class cl3(cl2):\n",
+    "    def class3_meth(self):\n",
+    "        return \"this is my cl3\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "bb117521-7a9c-40bc-90dd-c1575b7cd019",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "vc = cl3()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "0f77f8e5-08ac-400a-b6de-f41d273d7b65",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'class1 meth'"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vc.class_meth()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e202646f-d009-48b9-b76f-2a8ef133f81d",
+   "metadata": {},
+   "source": [
+    "Method Overriding"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "bd33b1ee-00b8-4592-8f5e-126767305841",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class test5:\n",
+    "    def test(self):\n",
+    "        return \"this is my test meth\"\n",
+    "    \n",
+    "class test6:\n",
+    "    def test(self):\n",
+    "        return \"this is my meth from class test6 \"\n",
+    "    \n",
+    "class test7(test5):\n",
+    "    def test(self):\n",
+    "        return \"this is my test from test7\" #Overriding means redefine\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "3c72fcfe-58e3-46a2-98a5-3ada6a05b89d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = test7()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "add8017a-893d-4266-b155-0a1c7ef60041",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'this is my test from test7'"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.test()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4d448f42-e85a-4b35-a69b-d03d1ceee351",
+   "metadata": {},
+   "source": [
+    "OVERLOADING"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "42459557-595e-47bb-9195-acbe2ff9d24c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class test8:\n",
+    "    \n",
+    "    def test(self , a = 5 , b = 4 , d = 8):\n",
+    "        return a, b , d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "c3738bc2-d33f-4acf-ac47-fe0c7ff1a509",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "var = test8()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "47c99e82-6a3a-48dd-8890-f4e93da65897",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(5, 4, 8)"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "var.test()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "283441e1-79e9-4446-a15e-32dd445af661",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "('ankit', 4, 8)"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "var.test(\"ankit\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "0813fac0-a180-4155-b73d-9ca024e80097",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "('ankit', 'raj', 8)"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "var.test(\"ankit\" , \"raj\")"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "6d8289fd-5283-457f-a5f6-4a21ebb766f0",
+   "metadata": {},
+   "source": [
+    "In overloading is a situation where number of argument and data type will be different.\n",
+    "\n",
+    "Overriding is a situatution where signature of the the function means name and parameter will same\n",
+    "we will just change the def of the function."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ead5e2a0-f290-41ad-850e-b7c4529feb1c",
+   "metadata": {},
+   "source": [
+    "POLYMORPHISM"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "a843cbf1-3854-4373-bc7d-17c942eff77a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class test1 :\n",
+    "    \n",
+    "    def test(selF):\n",
+    "        return \"this is my meth from test1\"\n",
+    "    \n",
+    "class test2:\n",
+    "    \n",
+    "    def test(self):\n",
+    "        return \"this is my meth test2\"\n",
+    "    \n",
+    "class test3:\n",
+    "    \n",
+    "    def test(self):\n",
+    "        return \"this is my meth from test3\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "bccbf55f-2615-46d4-b547-a9e5526785d1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "var = [test1() , test2() , test3()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "7a763f71-880b-4a40-bee8-33548cfcd199",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "this is my meth from test1\n",
+      "this is my meth test2\n",
+      "this is my meth from test3\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in var:\n",
+    "    print(i.test())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "0abc9b9d-7c6c-4560-b7b7-c146e3833e4b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#q1 : crete a file class for reading a data from one of the file with a method name read and write"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "1b0f801c-a691-44e2-a942-fbff0c95dd33",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def read():\n",
+    "    try:\n",
+    "        \n",
+    "        with open('test.txt' , 'r') as file:\n",
+    "            data = file.read()\n",
+    "            return data\n",
+    "    except FileNotFoundError as e:\n",
+    "        print(e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "e9e3b629-0d0c-4d18-96f9-c95a6c9b0966",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[Errno 2] No such file or directory: 'test.txt'\n"
+     ]
+    }
+   ],
+   "source": [
+    "read()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "6e009f7b-dde2-443d-9468-3e3f1ae49ff7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def write():\n",
+    "    with open('test.txt' , 'w') as file :\n",
+    "        data = file.write(\"this is my data for file\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "d8b96af4-9066-4afe-bc00-d6da81c406fc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "write()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "ef1f30c7-e3e2-4113-977d-f28993b9708e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import logging\n",
+    "\n",
+    "logging.basicConfig(filename='file_class.log', level=logging.DEBUG , filemode='w' , format=\"%(asctime)s %(level)s %(message)s\") \n",
+    "\n",
+    "                    \n",
+    "class file:\n",
+    "    \n",
+    "    def __init__(self , filename):\n",
+    "        self.filename = filename\n",
+    "        \n",
+    "    def read(self):\n",
+    "        logging.info(\"This is a start of read operation\")\n",
+    "        try:\n",
+    "            with open(self.filename , 'r') as file:\n",
+    "                data = file.read()\n",
+    "                logging.info(\"I am able to read file\")\n",
+    "                return data\n",
+    "        except FileNotFoundError as e:\n",
+    "            #print(e)\n",
+    "            logging.error(\"there is some isssue with the read file operation\")\n",
+    "            logging.error(e)\n",
+    "    \n",
+    "    def write(self , data1):\n",
+    "        try:\n",
+    "            logging.info(\"I am inside try to write fun\")\n",
+    "            with open(self.filename , 'a') as file :\n",
+    "                data = file.write(\"this is my data for file\")\n",
+    "                logging.info(\"I am able to write a data into file succesfully\")\n",
+    "                \n",
+    "        except Exception as e:\n",
+    "            #print(e)\n",
+    "            logging.info(\"There is an issue with write ops\")\n",
+    "            logging.error(e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "0d1202b0-35a6-4e0d-8aca-75b29692b702",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "file_obj.write(\"this is my data to be written inside my file\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "2c9acdb6-bf16-4772-b123-97bfd64d5fd2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Debug,INFO,WARNING,ERROR,CRITICAL"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3499d728-c2da-4643-85f8-7269e981ce8f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "file_obj = file(\"test1.txt\")\n",
+    "file_obj.read()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e53354d5-4fd1-4599-86e9-f0eb4e899d9e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
